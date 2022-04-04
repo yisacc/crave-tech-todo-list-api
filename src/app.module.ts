@@ -4,6 +4,7 @@ import { GraphQLModule } from '@nestjs/graphql';
 import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
 import { CoreModule } from './shared/core/core.module';
 import { TasksModule } from './tasks/tasks.module';
+import { SubTasksModule } from './sub-tasks/sub-tasks.module';
 
 @Module({
   imports: [
@@ -13,6 +14,7 @@ import { TasksModule } from './tasks/tasks.module';
     }),
     CoreModule,
     TasksModule,
+    SubTasksModule,
   ],
   controllers: [],
   providers: [],

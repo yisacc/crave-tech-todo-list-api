@@ -7,14 +7,28 @@ type TaskEntity {
   name: String!
 }
 
+type SubTaskEntity {
+  _id: String!
+  name: String!
+  task: TaskEntity!
+}
+
 type Query {
   tasks: [TaskEntity!]!
+  subTasks: [SubTaskEntity!]!
+  subTasksByTaskId(taskId: String!): [SubTaskEntity!]!
 }
 
 type Mutation {
   createTask(createTaskInput: CreateTaskInput!): TaskEntity!
+  createSubTask(createSubTaskInput: CreateSubTaskInput!): SubTaskEntity!
 }
 
 input CreateTaskInput {
   name: String!
+}
+
+input CreateSubTaskInput {
+  name: String!
+  task: String!
 }
