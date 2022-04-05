@@ -17,14 +17,6 @@ export class SubTaskEntity{
   })
   @Field()
   name: string;
-
-  @Prop({
-    required: true,
-    type: Types.ObjectId,
-    ref: TaskEntity.name,
-  })
-  @Field(type=>TaskEntity)
-  task: Types.ObjectId;
 }
 
 export const SubTaskDatabaseName = 'subTasks';

@@ -19,9 +19,4 @@ export class SubTasksResolver {
     return await this.subTasksService.findAll();
   }
 
-  @Query(() => [SubTaskEntity], { name: 'subTasksByTaskId' })
-  async findByTaskId(@Args('taskId', { type: () => String }) id: string):Promise<SubTaskEntity[]> {
-    return await this.subTasksService.findByCourseId(id);
-  }
-
 }

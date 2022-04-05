@@ -1,6 +1,7 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
-import { Document} from 'mongoose';
+import { Document, Schema as MongooseSchema, Types } from 'mongoose';
 import { Field, ObjectType } from '@nestjs/graphql';
+import { SubTaskEntity } from '../sub-tasks/sub-tasks.schema';
 
 
 @Schema({ timestamps: true, versionKey: false })
@@ -16,6 +17,15 @@ export class TaskEntity{
   })
   @Field()
   name: string;
+
+  @Prop({
+    required: true,
+    type: [MongooseSchema.Types.ObjectId],
+    default:[],
+    ref: SubTaskEntity.name,
+  })
+  @Field(()=>[SubTaskEntity] )
+  subTasks: MongooseSchema.Types.ObjectId[];
 }
 
 export const TaskDatabaseName = 'tasks';

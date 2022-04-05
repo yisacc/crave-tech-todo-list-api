@@ -14,7 +14,6 @@ export class SubTasksService {
   async create(createSubTaskInput: CreateSubTaskInput):Promise<SubTaskEntity> {
     const create:SubTaskDocument=new this.subTaskModel({
       name:createSubTaskInput.name,
-      task:createSubTaskInput.task,
     });
     return await create.save()
   }
@@ -23,7 +22,4 @@ export class SubTasksService {
     return this.subTaskModel.find();
   }
 
-  async findByCourseId(id:String):Promise<SubTaskDocument[]> {
-    return this.subTaskModel.find({course:id})
-  }
 }

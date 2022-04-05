@@ -2,21 +2,20 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
-type TaskEntity {
+type SubTaskEntity {
   _id: String!
   name: String!
 }
 
-type SubTaskEntity {
+type TaskEntity {
   _id: String!
   name: String!
-  task: TaskEntity!
+  subTasks: [SubTaskEntity!]!
 }
 
 type Query {
   tasks: [TaskEntity!]!
   subTasks: [SubTaskEntity!]!
-  subTasksByTaskId(taskId: String!): [SubTaskEntity!]!
 }
 
 type Mutation {
@@ -26,9 +25,9 @@ type Mutation {
 
 input CreateTaskInput {
   name: String!
+  subTasks: [String!]!
 }
 
 input CreateSubTaskInput {
   name: String!
-  task: String!
 }

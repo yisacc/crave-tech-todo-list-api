@@ -7,9 +7,4 @@ export class CreateSubTaskInput{
   @IsNotEmpty()
   @Field()
   name:string
-
-  @IsNotEmpty()
-  @IsMongoId()
-  @Field(()=>String)
-  task: MongooseSchema.Types.ObjectId;
 }
