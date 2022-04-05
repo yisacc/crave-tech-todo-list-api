@@ -4,6 +4,7 @@ import { Model } from 'mongoose';
 import { TaskDocument, TaskEntity } from './tasks.schema';
 import { CreateTaskInput } from './dto/create-task.input';
 import { SubTaskEntity } from '../sub-tasks/sub-tasks.schema';
+import { UpdateTaskInput } from './dto/update-task.input';
 
 @Injectable()
 export class TasksService {
@@ -25,5 +26,14 @@ export class TasksService {
       path:"subTasks",
       model:SubTaskEntity.name
     });
+  }
+
+  async update({id,subTask}:UpdateTaskInput):Promise<TaskDocument> {
+    let ObjectId = require('mongoose').Types.ObjectId;
+    const task:TaskDocument=await this.taskModel.findById(new ObjectId(id))
+    const newSubTasks=task.subTasks;
+    newSubTasks.push(subTask)
+    task.subTasks=newSubTasks;
+    return await task.save()
   }
 }

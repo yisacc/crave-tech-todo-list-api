@@ -5,6 +5,7 @@
 type SubTaskEntity {
   _id: String!
   name: String!
+  isCompleted: Boolean!
 }
 
 type TaskEntity {
@@ -20,7 +21,9 @@ type Query {
 
 type Mutation {
   createTask(createTaskInput: CreateTaskInput!): TaskEntity!
+  updateTask(updateTaskInput: UpdateTaskInput!): TaskEntity!
   createSubTask(createSubTaskInput: CreateSubTaskInput!): SubTaskEntity!
+  updateSubTaskStatus(updateSubTaskStatusInput: UpdateSubTaskStatusInput!): SubTaskEntity!
 }
 
 input CreateTaskInput {
@@ -28,6 +31,16 @@ input CreateTaskInput {
   subTasks: [String!]!
 }
 
+input UpdateTaskInput {
+  id: String!
+  subTask: String!
+}
+
 input CreateSubTaskInput {
   name: String!
+}
+
+input UpdateSubTaskStatusInput {
+  id: String!
+  isCompleted: Boolean!
 }

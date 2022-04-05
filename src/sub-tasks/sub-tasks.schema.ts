@@ -17,6 +17,13 @@ export class SubTaskEntity{
   })
   @Field()
   name: string;
+
+  @Prop({
+    required: true,
+    default:false
+  })
+  @Field()
+  isCompleted: boolean;
 }
 
 export const SubTaskDatabaseName = 'subTasks';
